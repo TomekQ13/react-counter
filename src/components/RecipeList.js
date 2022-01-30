@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Recipe from './Recipe'
+import { RecipeContex } from './App'
 
 export default function RecipeList({recipes}) {
-  return (
+
+    const {handleRecipeAdd} = useContext(RecipeContex)
+    return (
     <div className="recipe-list">
         <div>
             {recipes.map((recipe)=> {
@@ -15,8 +18,12 @@ export default function RecipeList({recipes}) {
             })}
         </div>
         <div className="recipe-list__add-recipe-btn-container">
-            <button className="btn btn--primary">Add recipe</button>
+            <button
+                className="btn btn--primary"
+                onClick={handleRecipeAdd}
+                >Add recipe
+            </button>
         </div>
     </div>
-  )
+    )
 }
